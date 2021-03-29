@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './Card.css'
 import { useStateValue } from '../StateProvider'
 
-function Card({ id, src, title, price, categoryCard, number }) {
+function Card({ id, src, title, price, categoryCard, number, textPrice }) {
   
   const [{ basket }, dispatch] = useStateValue();
   // check if the item already exists 
@@ -16,7 +16,8 @@ function Card({ id, src, title, price, categoryCard, number }) {
         title: title,
         image: src,
         price: price,
-        number: number
+        number: number,
+        textPrice: textPrice
       }
     })
     
@@ -27,7 +28,7 @@ function Card({ id, src, title, price, categoryCard, number }) {
       <img src={src} alt="" />
       <div className="card__info">
         <p>{title}</p>
-        {price && <h5>₦ {price}</h5>}
+        {price && <h5>₦ {textPrice? textPrice : price}</h5>}
         {!categoryCard && <button onClick={addToBasket}>add to basket</button>}
       </div>
     </div>

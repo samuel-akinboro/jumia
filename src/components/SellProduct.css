@@ -11,6 +11,7 @@
     flex: 0.70;
     padding: 1.5em;
     box-shadow: 0px 0px 8px lightgray;
+    max-height: 530px;
 }
 
 .product__description{
@@ -18,14 +19,15 @@
     flex: 0.25;
     padding-top: 1.5em;
     box-shadow: 0px 0px 8px lightgray;
+    height: 850px;
 }
 
 .images__container{
     display: flex;
     justify-content: space-between;
     margin-top: 2em;
-    height: 60%;
-    max-height: 500px;
+    height: 100%;
+    max-height: 400px;
 }
 
 .main__image{
@@ -55,13 +57,13 @@
     cursor: pointer;
 }
 
-.other__images img{
+.other__images .svg{
     width: 40px;
     object-fit: contain;
     cursor: pointer;
 }
 
-.main__image img {
+.main__image .svg {
     height: 100px;
     cursor: pointer;
 }

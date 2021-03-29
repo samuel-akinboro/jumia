@@ -1,9 +1,18 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Advertisement from './Advertisement';
 import './AllProducts.css'
 import Card from './Card';
+import {db} from '../Firebase'
 
 function AllProducts() {
+  const [products, setProducts] = useState([])
+  useEffect(() => {
+    db.collection('products').onSnapshot(snapshot => setProducts(snapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }))))
+  }, [])
+
   return (
     <div className="all-products">
       <div className="product-box">
@@ -57,53 +66,26 @@ function AllProducts() {
       <div className="product-box">
         <h3 className="yellow">Best Portable Speaker Sale of the Season</h3>
         <div className="product-list">
-          <Card
-            id="7"
-            src="/images/deals/1.jpg"
-            title="Yellow Gold plated Wedding Ring"
-            price="2500"
-            number="1"
-          />
-          <Card
-            id="8"
-            src="/images/deals/2.jpg"
-            title="Yellow Gold plated Wedding Ring"
-            price="3500"
-            number="1"
-          />
-          <Card
-            id="9"
-            src="/images/deals/3.jpg"
-            title="Yellow Gold plated Wedding Ring"
-            price="200"
-            number="1"
-          />
-          <Card
-            id="10"
-            src="/images/deals/4.jpg"
-            title="Yellow Gold plated Wedding Ring"
-            price="2500"
-            number="1"
-          />
-          <Card
-            id="11"
-            src="/images/deals/5.jpg"
-            title="Yellow Gold plated Wedding Ring"
-            price="2500"
-            number="1"
-          />
-          <Card
-            id="12"
-            src="/images/deals/5.jpg"
-            title="Yellow Gold plated Wedding Ring"
-            price="8000"
-            number="1"
-          />
+          {products.map((product) => (
+            <Card
+              id= {product.id}
+              src={product.src}
+              title={product.title}
+              price={product.price}
+              number={product.number}
+              textPrice={product.textPrice}
+            />
+          ))}
         </div>
       </div>
 
-       <div className="product-box">
-        <h3 className="yellow" style={{backgroundColor: "#FF0000", color: "#fff"}}>Best Portable Speaker Sale of the Season</h3>
+      <div className="product-box">
+        <h3
+          className="yellow"
+          style={{ backgroundColor: "#FF0000", color: "#fff" }}
+        >
+          Best Portable Speaker Sale of the Season
+        </h3>
         <div className="product-list">
           <Card
             id="7"
@@ -215,7 +197,7 @@ function AllProducts() {
           />
         </div>
       </div>
-      
+
       <div className="product-box">
         <Advertisement image1="images/ad/ad3.jpg" image2="images/ad/ad4.jpeg" />
       </div>
@@ -285,11 +267,11 @@ function AllProducts() {
           />
         </div>
       </div>
-      
+
       <div className="product-box">
         <Advertisement image1="images/ad/ad3.jpg" image2="images/ad/ad4.jpeg" />
       </div>
-      
+
       <div className="product-box">
         <h3 className="yellow">Best Portable Speaker Sale of the Season</h3>
         <div className="product-list">
@@ -342,7 +324,12 @@ function AllProducts() {
         <Advertisement image1="images/ad/ad3.jpg" image2="images/ad/ad4.jpeg" />
       </div>
       <div className="product-box">
-        <h3 className="yellow" style={{backgroundColor: "#0000FF", color: "#fff"}}>Best Portable Speaker Sale of the Season</h3>
+        <h3
+          className="yellow"
+          style={{ backgroundColor: "#0000FF", color: "#fff" }}
+        >
+          Best Portable Speaker Sale of the Season
+        </h3>
         <div className="product-list">
           <Card
             id="7"
@@ -393,7 +380,12 @@ function AllProducts() {
         <Advertisement image1="images/ad/ad3.jpg" image2="images/ad/ad4.jpeg" />
       </div>
       <div className="product-box">
-        <h3 className="yellow" style={{backgroundColor: "#FF0000", color: "#fff"}}>Best Portable Speaker Sale of the Season</h3>
+        <h3
+          className="yellow"
+          style={{ backgroundColor: "#FF0000", color: "#fff" }}
+        >
+          Best Portable Speaker Sale of the Season
+        </h3>
         <div className="product-list">
           <Card
             id="7"

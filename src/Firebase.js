@@ -15,7 +15,12 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 // connect to firestore(database)
 const db = firebaseApp.firestore();
+
 // authentication
 const auth = firebase.auth();
 
-export { db, auth };
+//  product photos
+const photoDB = firebase.storage();
+
+
+export { db, auth, photoDB };

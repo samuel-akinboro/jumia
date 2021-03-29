@@ -8,6 +8,9 @@ import Login from './components/Login';
 import { auth } from './Firebase'
 import { useStateValue } from './StateProvider';
 import SellProduct from './components/SellProduct';
+import './Firebase'
+import './Promise'
+import redux from './playground/redux-101'
 
 
 const App = () => {
